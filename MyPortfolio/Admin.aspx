@@ -5,13 +5,14 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+
     <div class="admin-container">
         <div class="admin-header">
             <h2>Admin Dashboard</h2>
             <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-secondary" OnClick="btnLogout_Click" />
         </div>
-        
-        <!-- Fixed: Added type="button" to prevent form submission -->
+
         <div class="admin-tabs">
             <button class="tab-button active" data-tab="skills" type="button">Skills</button>
             <button class="tab-button" data-tab="projects" type="button">Projects</button>
@@ -34,7 +35,7 @@
                         <label>Description</label>
                         <asp:TextBox ID="txtSkillDescription" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
                     </div>
-                    <!-- Fixed: Changed from icon input to file upload -->
+                  
                     <div class="form-group">
                         <label>Skill Image</label>
                         <asp:FileUpload ID="skillImage" runat="server" CssClass="form-control" accept="image/*" />
@@ -124,7 +125,7 @@
                     <div class="form-group">
                         <label>Project Image</label>
                         <asp:FileUpload ID="projectImageUpload" runat="server" CssClass="form-control" accept="image/*" />
-                        <%--<asp:HiddenField ID="hfCurrentProjectImage" runat="server" Value='<%# Eval("ImagePath") %>' />--%>
+                        
                         <asp:HiddenField ID="HiddenField1" runat="server" Value='<%# Eval("ImageUrl") %>' />
 
                         <small class="form-text">Upload JPG, PNG, or GIF images only</small>
@@ -157,13 +158,6 @@
                             </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="Image">
-                                <%--<EditItemTemplate>
-                                    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center;">
-                                    <img src='<%# Eval("ImageUrl") %>' alt="Current" style="width: 80px; height: 50px; object-fit: cover;" 
-                                         onerror="this.src='Assets/images/default-project.png'" />
-                                    <asp:FileUpload ID="fuEditProjectImage" runat="server" CssClass="form-control" accept="image/*" />
-                                    </div>
-                                </EditItemTemplate>--%>
                                 <EditItemTemplate>
                                     <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center;">
                                         <img src='<%# Eval("ImageUrl") %>' alt="Current" style="width: 80px; height: 50px; object-fit: cover;" 
@@ -326,7 +320,7 @@
                         <label>Location</label>
                         <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
-                    <!-- Fixed: Changed from URL input to file upload -->
+                   
                     <div class="form-group">
                         <label>Profile Image</label>
                         <asp:FileUpload ID="profileImageUpload" runat="server" CssClass="form-control" accept="image/*" />
@@ -424,8 +418,9 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Scripts" runat="server">
-    <!-- Fixed: Added preventDefault() to prevent form submission on tab clicks -->
+    
     <script>
+        
         // Tab functionality
         document.addEventListener('DOMContentLoaded', function () {
             const tabButtons = document.querySelectorAll('.tab-button');

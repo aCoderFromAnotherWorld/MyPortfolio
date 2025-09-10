@@ -227,3 +227,50 @@ if (hamburger && navLinks) {
         });
     });
 }
+
+
+// Typewriter effect
+document.addEventListener("DOMContentLoaded", function () {
+    const roles = [
+    "CSE Undergraduate",
+    "Web Developer",
+    "Cybersecurity Enthusiast"
+    ];
+
+    let i = 0; // index of roles
+    let j = 0; // index of characters
+    let currentRole = "";
+    let isDeleting = false;
+    const speed = 100; // typing speed
+    const eraseSpeed = 50; // deleting speed
+    const delayBetween = 1500; // pause before deleting
+
+    function typeWriter() {
+        const element = document.getElementById("typewriter");
+    if (!element) return;
+
+    currentRole = roles[i];
+
+    if (!isDeleting) {
+        element.textContent = currentRole.substring(0, j++);
+            if (j > currentRole.length) {
+        isDeleting = true;
+    setTimeout(typeWriter, delayBetween);
+            } else {
+        setTimeout(typeWriter, speed);
+            }
+        } else {
+        element.textContent = currentRole.substring(0, j--);
+    if (j < 0) {
+        isDeleting = false;
+    i = (i + 1) % roles.length; // loop to next role
+    setTimeout(typeWriter, speed);
+            } else {
+        setTimeout(typeWriter, eraseSpeed);
+            }
+        }
+    }
+
+    typeWriter(); // start typing
+});
+

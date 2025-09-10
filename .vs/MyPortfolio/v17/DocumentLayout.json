@@ -7,12 +7,36 @@
       "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\myportfolio\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\myportfolio\\admin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\admin.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\myportfolio\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\admin.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|c:\\users\\admin\\desktop\\git project\\new folder (2)\\myportfolio\\myportfolio\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|c:\\users\\admin\\desktop\\git project\\new folder (2)\\myportfolio\\myportfolio\\assets\\js\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\assets\\js\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|c:\\users\\admin\\desktop\\git project\\new folder (2)\\myportfolio\\myportfolio\\assets\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\assets\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|c:\\users\\admin\\desktop\\git project\\new folder (2)\\myportfolio\\myportfolio\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|c:\\users\\admin\\desktop\\git project\\new folder (2)\\myportfolio\\myportfolio\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|c:\\users\\admin\\desktop\\git project\\new folder (2)\\myportfolio\\myportfolio\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|solutionrelative:myportfolio\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C3EF6681-A5C0-4123-BA47-3EE35B40B94A}|MyPortfolio\\MyPortfolio.csproj|C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\myportfolio\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,15 +58,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Admin.aspx",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Admin.aspx",
-              "RelativeDocumentMoniker": "MyPortfolio\\Admin.aspx",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Admin.aspx",
-              "RelativeToolTip": "MyPortfolio\\Admin.aspx",
+              "DocumentIndex": 4,
+              "Title": "main.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Assets\\js\\main.js",
+              "RelativeDocumentMoniker": "MyPortfolio\\Assets\\js\\main.js",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Assets\\js\\main.js",
+              "RelativeToolTip": "MyPortfolio\\Assets\\js\\main.js",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAowOcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-10T14:39:37.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "styles.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Assets\\css\\styles.css",
+              "RelativeDocumentMoniker": "MyPortfolio\\Assets\\css\\styles.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Assets\\css\\styles.css",
+              "RelativeToolTip": "MyPortfolio\\Assets\\css\\styles.css",
+              "ViewState": "AgIAABYCAAAAAAAAAAAmwGECAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-10T14:39:08.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Site.Master",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Site.Master",
+              "RelativeDocumentMoniker": "MyPortfolio\\Site.Master",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Site.Master",
+              "RelativeToolTip": "MyPortfolio\\Site.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-10T11:41:03.218Z"
+              "WhenOpened": "2025-09-10T14:22:31.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Site.Master.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Site.Master.cs",
+              "RelativeDocumentMoniker": "MyPortfolio\\Site.Master.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Site.Master.cs",
+              "RelativeToolTip": "MyPortfolio\\Site.Master.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T14:22:29.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Login.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Login.aspx.cs",
+              "RelativeDocumentMoniker": "MyPortfolio\\Login.aspx.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Login.aspx.cs",
+              "RelativeToolTip": "MyPortfolio\\Login.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T14:22:16.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Login.aspx",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Login.aspx",
+              "RelativeDocumentMoniker": "MyPortfolio\\Login.aspx",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Login.aspx",
+              "RelativeToolTip": "MyPortfolio\\Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-10T14:22:08.485Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -54,32 +144,47 @@
               "RelativeToolTip": "MyPortfolio\\Default.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-09T22:50:37.105Z",
+              "WhenOpened": "2025-09-10T14:22:06.848Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "Admin.aspx",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Admin.aspx",
+              "RelativeDocumentMoniker": "MyPortfolio\\Admin.aspx",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Admin.aspx",
+              "RelativeToolTip": "MyPortfolio\\Admin.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-10T11:41:03.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Default.aspx.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Default.aspx.cs",
               "RelativeDocumentMoniker": "MyPortfolio\\Default.aspx.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Default.aspx.cs",
               "RelativeToolTip": "MyPortfolio\\Default.aspx.cs",
-              "ViewState": "AgIAAO8AAAAAAAAAAAAAAAUBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA+wBgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-09T22:49:50.491Z"
+              "WhenOpened": "2025-09-09T22:49:50.491Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Admin.aspx.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Admin.aspx.cs",
               "RelativeDocumentMoniker": "MyPortfolio\\Admin.aspx.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\Git Project\\New folder (2)\\MyPortfolio\\MyPortfolio\\Admin.aspx.cs",
               "RelativeToolTip": "MyPortfolio\\Admin.aspx.cs",
-              "ViewState": "AgIAACACAAAAAAAAAAAowDMCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAsAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-09T22:49:48.994Z"
+              "WhenOpened": "2025-09-09T22:49:48.994Z",
+              "EditorCaption": ""
             }
           ]
         }

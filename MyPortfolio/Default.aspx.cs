@@ -24,32 +24,6 @@ namespace MyPortfolio
             }
         }
 
-        //private void LoadProfile()
-        //{
-        //    string connectionString = ConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        try
-        //        {
-        //            conn.Open();
-        //            SqlCommand cmd = new SqlCommand("SELECT ProfileImage FROM Profile WHERE ProfileId = 1", conn);
-        //            SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //            DataTable dt = new DataTable();
-        //            da.Fill(dt);
-
-        //            // Bind skills to repeater
-        //            rptProfile.DataSource = dt;
-        //            rptProfile.DataBind();
-        //            conn.Close();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            // Log error
-        //            System.Diagnostics.Debug.WriteLine("Error loading skills: " + ex.Message);
-        //        }
-        //    }
-        //}
-
         private void LoadSkills()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;

@@ -27,6 +27,8 @@ namespace MyPortfolio
 
             if (!IsPostBack)
             {
+                //hfActiveTab.Value = "#skills";
+
                 LoadSkills();
                 LoadProjects();
                 LoadEducation();
@@ -326,196 +328,6 @@ namespace MyPortfolio
             LoadProjects();
         }
 
-        //protected void gvProjects_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        //{
-        //    GridViewRow row = gvProjects.Rows[e.RowIndex];
-        //    int projectId = Convert.ToInt32(gvProjects.DataKeys[e.RowIndex].Value);
-
-        //    string title = ((TextBox)row.FindControl("txtEditTitle")).Text;
-        //    int order = Convert.ToInt32(((TextBox)row.FindControl("txtEditOrder")).Text);
-
-        //    HiddenField hf = (HiddenField)row.FindControl("hfCurrentProjectImage");
-        //    string currentImagePath = ((HiddenField)row.FindControl("hfCurrentProjectImage")).Value;
-        //    string newImagePath = currentImagePath;
-        //    currentImagePath = hf != null ? hf.Value : "";
-
-        //    //string newImagePath = currentImagePath;
-
-        //    // Handle file upload
-        //    FileUpload fuEditProjectImage = (FileUpload)row.FindControl("fuEditProjectImage");
-        //    if (fuEditProjectImage !=null && fuEditProjectImage.HasFile)
-        //    {
-        //        newImagePath = HandleImageUpload(fuEditProjectImage, "projects");
-        //        if (string.IsNullOrEmpty(newImagePath))
-        //        {
-        //            newImagePath = currentImagePath;
-        //        }
-        //        else
-        //        {
-        //            // Delete old image file if it's different from the new one
-        //            if (currentImagePath != newImagePath && !string.IsNullOrEmpty(currentImagePath))
-        //            {
-        //                DeleteImageFile(currentImagePath);
-        //            }
-        //        }
-        //    }
-
-        //    string connectionString = WebConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;
-
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand cmd = new SqlCommand("UPDATE Projects SET Title = @Title, ImageUrl = @ImageUrl, DisplayOrder = @DisplayOrder WHERE ProjectId = @ProjectId", conn);
-        //        cmd.Parameters.AddWithValue("@Title", title);
-        //        cmd.Parameters.AddWithValue("@ImageUrl", newImagePath);
-        //        cmd.Parameters.AddWithValue("@DisplayOrder", order);
-        //        cmd.Parameters.AddWithValue("@ProjectId", projectId);
-
-        //        conn.Open();
-        //        cmd.ExecuteNonQuery();
-        //    }
-
-        //    gvProjects.EditIndex = -1;
-        //    LoadProjects();
-        //    ShowAlert("Project updated successfully!", false);
-        //}
-
-        //protected void gvProjects_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        //{
-        //    GridViewRow row = gvProjects.Rows[e.RowIndex];
-        //    int projectId = Convert.ToInt32(gvProjects.DataKeys[e.RowIndex].Value);
-
-        //    // Safely get title
-        //    string title = "";
-        //    TextBox txtTitle = (TextBox)row.FindControl("txtEditTitle");
-        //    if (txtTitle != null)
-        //    {
-        //        title = txtTitle.Text;
-        //    }
-
-        //    // Safely get order
-        //    int order = 0;
-        //    TextBox txtOrder = (TextBox)row.FindControl("txtEditOrder");
-        //    if (txtOrder != null && !string.IsNullOrEmpty(txtOrder.Text))
-        //    {
-        //        int.TryParse(txtOrder.Text, out order);
-        //    }
-
-        //    // Safely get the current image path from hidden field
-        //    string currentImagePath = "";
-        //    HiddenField hf = (HiddenField)row.FindControl("hfCurrentProjectImage");
-        //    if (hf != null)
-        //    {
-        //        currentImagePath = hf.Value;
-        //    }
-        //    string newImagePath = currentImagePath;
-
-        //    // Handle file upload
-        //    FileUpload fuEditProjectImage = (FileUpload)row.FindControl("fuEditProjectImage");
-        //    if (fuEditProjectImage != null && fuEditProjectImage.HasFile)
-        //    {
-        //        newImagePath = HandleImageUpload(fuEditProjectImage, "projects");
-        //        if (string.IsNullOrEmpty(newImagePath))
-        //        {
-        //            newImagePath = currentImagePath;
-        //        }
-        //        else
-        //        {
-        //            // Delete old image file if it's different from the new one
-        //            if (currentImagePath != newImagePath && !string.IsNullOrEmpty(currentImagePath))
-        //            {
-        //                DeleteImageFile(currentImagePath);
-        //            }
-        //        }
-        //    }
-
-        //    string connectionString = WebConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;
-
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand cmd = new SqlCommand("UPDATE Projects SET Title = @Title, ImageUrl = @ImageUrl, DisplayOrder = @DisplayOrder WHERE ProjectId = @ProjectId", conn);
-        //        cmd.Parameters.AddWithValue("@Title", title);
-        //        cmd.Parameters.AddWithValue("@ImageUrl", newImagePath);
-        //        cmd.Parameters.AddWithValue("@DisplayOrder", order);
-        //        cmd.Parameters.AddWithValue("@ProjectId", projectId);
-
-        //        conn.Open();
-        //        cmd.ExecuteNonQuery();
-        //    }
-
-        //    gvProjects.EditIndex = -1;
-        //    LoadProjects();
-        //    ShowAlert("Project updated successfully!", false);
-        //}
-
-
-        //protected void gvProjects_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        //{
-        //    GridViewRow row = gvProjects.Rows[e.RowIndex];
-        //    int projectId = Convert.ToInt32(gvProjects.DataKeys[e.RowIndex].Value);
-
-        //    // Safely get title
-        //    string title = "";
-        //    TextBox txtTitle = (TextBox)row.FindControl("txtEditTitle");
-        //    if (txtTitle != null)
-        //    {
-        //        title = txtTitle.Text;
-        //    }
-
-        //    // Safely get order
-        //    int order = 0;
-        //    TextBox txtOrder = (TextBox)row.FindControl("txtEditOrder");
-        //    if (txtOrder != null && !string.IsNullOrEmpty(txtOrder.Text))
-        //    {
-        //        int.TryParse(txtOrder.Text, out order);
-        //    }
-
-        //    // Safely get the current image path from hidden field
-        //    string currentImagePath = "";
-        //    HiddenField hf = (HiddenField)row.FindControl("hfCurrentProjectImage");
-        //    if (hf != null)
-        //    {
-        //        currentImagePath = hf.Value;
-        //    }
-        //    string newImagePath = currentImagePath;
-
-        //    // Handle file upload
-        //    FileUpload fuEditProjectImage = (FileUpload)row.FindControl("fuEditProjectImage");
-        //    if (fuEditProjectImage != null && fuEditProjectImage.HasFile)
-        //    {
-        //        newImagePath = HandleImageUpload(fuEditProjectImage, "projects");
-        //        if (string.IsNullOrEmpty(newImagePath))
-        //        {
-        //            newImagePath = currentImagePath;
-        //        }
-        //        else
-        //        {
-        //            // Delete old image file if it's different from the new one
-        //            if (currentImagePath != newImagePath && !string.IsNullOrEmpty(currentImagePath))
-        //            {
-        //                DeleteImageFile(currentImagePath);
-        //            }
-        //        }
-        //    }
-
-        //    string connectionString = WebConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;
-
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand cmd = new SqlCommand("UPDATE Projects SET Title = @Title, ImageUrl = @ImageUrl, DisplayOrder = @DisplayOrder WHERE ProjectId = @ProjectId", conn);
-        //        cmd.Parameters.AddWithValue("@Title", title);
-        //        cmd.Parameters.AddWithValue("@ImageUrl", newImagePath);
-        //        cmd.Parameters.AddWithValue("@DisplayOrder", order);
-        //        cmd.Parameters.AddWithValue("@ProjectId", projectId);
-
-        //        conn.Open();
-        //        cmd.ExecuteNonQuery();
-        //    }
-
-        //    gvProjects.EditIndex = -1;
-        //    LoadProjects();
-        //    ShowAlert("Project updated successfully!", false);
-        //}
-
         protected void gvProjects_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             GridViewRow row = gvProjects.Rows[e.RowIndex];
@@ -561,8 +373,6 @@ namespace MyPortfolio
             LoadProjects();
             ShowAlert("Project updated successfully!", false);
         }
-
-
 
         protected void gvProjects_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
