@@ -124,6 +124,9 @@
                     <div class="form-group">
                         <label>Project Image</label>
                         <asp:FileUpload ID="projectImageUpload" runat="server" CssClass="form-control" accept="image/*" />
+                        <%--<asp:HiddenField ID="hfCurrentProjectImage" runat="server" Value='<%# Eval("ImagePath") %>' />--%>
+                        <asp:HiddenField ID="HiddenField1" runat="server" Value='<%# Eval("ImageUrl") %>' />
+
                         <small class="form-text">Upload JPG, PNG, or GIF images only</small>
                     </div>
                     <div class="form-group">
@@ -154,13 +157,22 @@
                             </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="Image">
-                                <EditItemTemplate>
+                                <%--<EditItemTemplate>
                                     <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center;">
                                     <img src='<%# Eval("ImageUrl") %>' alt="Current" style="width: 80px; height: 50px; object-fit: cover;" 
                                          onerror="this.src='Assets/images/default-project.png'" />
                                     <asp:FileUpload ID="fuEditProjectImage" runat="server" CssClass="form-control" accept="image/*" />
                                     </div>
+                                </EditItemTemplate>--%>
+                                <EditItemTemplate>
+                                    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center;">
+                                        <img src='<%# Eval("ImageUrl") %>' alt="Current" style="width: 80px; height: 50px; object-fit: cover;" 
+                                             onerror="this.src='Assets/images/default-project.png'" />
+                                        <asp:FileUpload ID="fuEditProjectImage" runat="server" CssClass="form-control" accept="image/*" />
+                                        <asp:HiddenField ID="hfCurrentProjectImage" runat="server" Value='<%# Bind("ImageUrl") %>' />
+                                    </div>
                                 </EditItemTemplate>
+
                                 <ItemTemplate>
                                     <asp:Image ID="imgProject" runat="server" ImageUrl='<%# Eval("ImageUrl") %>' 
                                                Height="50" Width="80" style="object-fit: cover;" />
