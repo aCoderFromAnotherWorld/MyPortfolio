@@ -144,7 +144,7 @@
     </div>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <%--<section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-form">
@@ -165,12 +165,41 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
-                    <button type="submit" class="btn">Send Message</button>
+                    <button type="submit" class="btn">Send Message</button>--%>
                     <%--<asp:Button ID="btn" runat="server" Text="Send Message" OnClick="" />--%>
-                </form>
+                <%--</form>
             </div>
         </div>
+    </section>--%>
+    <section id="contact" class="contact">
+        <div class="contact-form">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:Label ID="lblContactMessage" runat="server" CssClass="alert" Visible="false"></asp:Label>
+            
+                    <div class="form-group">
+                        <label for="txtName">Name</label>
+                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" required="true"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtEmail">Email</label>
+                        <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" CssClass="form-control" required="true"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtSubject">Subject</label>
+                        <asp:TextBox ID="txtSubject" runat="server" CssClass="form-control" required="true"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMessage">Message</label>
+                        <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control" required="true"></asp:TextBox>
+                    </div>
+                    <asp:Button ID="btnSubmit" runat="server" Text="Send Message" CssClass="btn" OnClick="btnSubmit_Click" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
     </section>
+
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Scripts" runat="server">
     <script src="Assets/js/scripts.js"></script>

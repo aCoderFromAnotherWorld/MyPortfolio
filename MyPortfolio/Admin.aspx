@@ -17,6 +17,7 @@
             <button class="tab-button" data-tab="projects" type="button">Projects</button>
             <button class="tab-button" data-tab="education" type="button">Education</button>
             <button class="tab-button" data-tab="profile" type="button">Profile</button>
+            <button class="tab-button" data-tab="messages" type="button">Messages</button>
         </div>
         
         <div class="tab-content">
@@ -326,6 +327,86 @@
                     <asp:Label ID="lblProfileMessage" runat="server" CssClass="success-message" Visible="false"></asp:Label>
                 </div>
             </div>
+
+            <!-- Messages Tab -->
+            <div id="messages-tab" class="tab-pane">
+                <h3>Contact Messages</h3>
+                <div class="data-panel">
+                    <div class="messages-header">
+                        <h4>Received Messages</h4>
+                        <div class="messages-filter">
+                            <asp:DropDownList ID="ddlMessageFilter" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlMessageFilter_SelectedIndexChanged">
+                                <asp:ListItem Text="All Messages" Value="all"></asp:ListItem>
+                                <asp:ListItem Text="Unread Only" Value="unread"></asp:ListItem>
+                                <asp:ListItem Text="Read Only" Value="read"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+        
+                    <asp:GridView ID="gvMessages" runat="server" AutoGenerateColumns="False" DataKeyNames="ContactId"
+                        OnRowDataBound="gvMessages_RowDataBound" OnRowCommand="gvMessages_RowCommand"
+                        CssClass="admin-table messages-table">
+                        <Columns>
+                            <asp:BoundField DataField="ContactId" HeaderText="ID" ReadOnly="True" />
+                            <asp:BoundField DataField="Name" HeaderText="Name" />
+                            <asp:BoundField DataField="Email" HeaderText="Email" />
+                            <asp:BoundField DataField="Subject" HeaderText="Subject" />
+                            <asp:TemplateField HeaderText="Message Preview">
+                                <ItemTemplate>
+                                    <div class="message-preview">
+                                        <%# GetMessagePreview(Eval("Message").ToString()) %>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="CreatedDate" HeaderText="Received" DataFormatString="{0:MMM dd, yyyy HH:mm}" />
+                            <asp:TemplateField HeaderText="Status">
+                                <ItemTemplate>
+                                    <span class='status-badge <%# Convert.ToBoolean(Eval("IsRead")) ? "read" : "unread" %>'>
+                                        <%# Convert.ToBoolean(Eval("IsRead")) ? "Read" : "Unread" %>
+                                    </span>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Actions">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnViewMessage" runat="server" Text="View" CommandName="ViewMessage" 
+                                        CommandArgument='<%# Eval("ContactId") %>' CssClass="btn btn-info btn-sm" />
+                                    <asp:Button ID="btnDeleteMessage" runat="server" Text="Delete" CommandName="DeleteMessage" 
+                                        CommandArgument='<%# Eval("ContactId") %>' CssClass="btn btn-danger btn-sm" 
+                                        OnClientClick="return confirm('Are you sure you want to delete this message?');" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+
+                <!-- Message Detail Modal -->
+                <div class="modal" id="messageModal" style="display: none;">
+                    <div class="modal-content message-modal">
+                        <span class="close-modal" id="closeMessageModal">&times;</span>
+                        <div class="modal-header">
+                            <h2 id="modalMessageSubject">Message Details</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="message-details">
+                                <div class="message-info">
+                                    <div><strong>From:</strong> <span id="modalMessageName"></span></div>
+                                    <div><strong>Email:</strong> <span id="modalMessageEmail"></span></div>
+                                    <div><strong>Date:</strong> <span id="modalMessageDate"></span></div>
+                                </div>
+                                <div class="message-content">
+                                    <h4>Message:</h4>
+                                    <p id="modalMessageContent"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="btnMarkAsRead" runat="server" Text="Mark as Read" CssClass="btn btn-primary" 
+                                OnClick="btnMarkAsRead_Click" style="display: none;" />
+                            <button type="button" class="btn btn-secondary" onclick="closeMessageModal()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>
@@ -353,132 +434,266 @@
                 });
             });
         });
+
+        // Message Modal functionality
+        function closeMessageModal() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            var modal = document.getElementById('messageModal');
+            if (event.target == modal) {
+                closeMessageModal();
+            }
+        }
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeMessageModal();
+            }
+        });
+
+        // Close button functionality
+        document.getElementById('closeMessageModal').addEventListener('click', closeMessageModal);
     </script>
     <style>
-    .admin-container {
-        padding: 100px 0 50px;
-        min-height: 100vh;
-        margin: 0px 50px 0px 50px;
-    }
+        .admin-container {
+            padding: 100px 0 50px;
+            min-height: 100vh;
+            margin: 0px 50px 0px 50px;
+        }
     
-    .admin-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #ddd;
-    }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
     
-    .admin-tabs {
-        display: flex;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #ddd;
-    }
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
     
-    .tab-button {
-        padding: 10px 20px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-weight: 600;
-        color: var(--text-color);
-        border-bottom: 3px solid transparent;
-    }
+        .tab-button {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-color);
+            border-bottom: 3px solid transparent;
+        }
     
-    .tab-button.active {
-        border-bottom-color: var(--primary-color);
-        color: var(--primary-color);
-    }
+        .tab-button.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
     
-    .tab-button:hover {
-        color: var(--primary-color);
-    }
+        .tab-button:hover {
+            color: var(--primary-color);
+        }
     
-    .tab-pane {
-        display: none;
-    }
+        .tab-pane {
+            display: none;
+        }
     
-    .tab-pane.active {
-        display: block;
-    }
+        .tab-pane.active {
+            display: block;
+        }
     
-    .form-panel {
-        background: var(--card-bg);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: var(--shadow);
-        margin-bottom: 30px;
-    }
+        .form-panel {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
     
-    .data-panel {
-        background: var(--card-bg);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: var(--shadow);
-        overflow-x: auto;
-    }
+        .data-panel {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow-x: auto;
+        }
     
-    .admin-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
     
-    .admin-table th, .admin-table td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
+        .admin-table th, .admin-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
     
-    .admin-table th {
-        background-color: #f8f9fa;
-        font-weight: 600;
-    }
+        .admin-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
     
-    .admin-table tr:hover {
-        background-color: #f8f9fa;
-    }
+        .admin-table tr:hover {
+            background-color: #f8f9fa;
+        }
     
-    .success-message {
-        display: block;
-        color: var(--secondary-color);
-        margin-top: 20px;
-        text-align: center;
-    }
+        .success-message {
+            display: block;
+            color: var(--secondary-color);
+            margin-top: 20px;
+            text-align: center;
+        }
     
-    .btn-danger {
-        background-color: #e74c3c;
-        border-color: #e74c3c;
-    }
+        .btn-danger {
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+        }
     
-    .btn-danger:hover {
-        background-color: #c0392b;
-        border-color: #c0392b;
-    }
+        .btn-danger:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
     
-    .btn-secondary {
-        background-color: #95a5a6;
-        border-color: #95a5a6;
-    }
+        .btn-secondary {
+            background-color: #95a5a6;
+            border-color: #95a5a6;
+        }
     
-    .btn-secondary:hover {
-        background-color: #7f8c8d;
-        border-color: #7f8c8d;
-    }
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+            border-color: #7f8c8d;
+        }
     
-    .form-text {
-        font-size: 0.875em;
-        color: #6c757d;
-        margin-top: 0.25rem;
-    }
+        .form-text {
+            font-size: 0.875em;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
     
-    /* Dark mode adjustments */
-    .dark-mode .admin-table th {
-        background-color: #2c3e50;
-    }
+        /* Dark mode adjustments */
+        .dark-mode .admin-table th {
+            background-color: #2c3e50;
+        }
     
-    .dark-mode .admin-table tr:hover {
-        background-color: #34495e;
-    }
-</style>
+        .dark-mode .admin-table tr:hover {
+            background-color: #34495e;
+        }
+
+        /* Messages Tab Styles */
+        .messages-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .messages-filter {
+            width: 200px;
+        }
+
+        .messages-table th {
+            background-color: #f8f9fa;
+        }
+
+        .message-preview {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status-badge.unread {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .status-badge.read {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .unread-message {
+            background-color: #3498db !important;
+            font-weight: bold;
+        }
+
+        .unread-message:hover {
+            background-color: #0d1ca9 !important;
+        }
+
+        /* Message Modal Styles */
+        .message-modal {
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .message-info {
+            background-color: var(--bg-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .message-info div {
+            margin-bottom: 8px;
+        }
+
+        .message-content {
+            padding: 15px;
+            background-color: var(--bg-color);
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .message-content h4 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            background-color: var(--bg-color);
+        }
+
+        .btn-sm {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+
+        /* Responsive design for messages */
+        @media (max-width: 768px) {
+            .messages-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+    
+            .messages-filter {
+                width: 100%;
+            }
+    
+            .message-modal {
+                margin: 10px;
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
 </asp:Content>

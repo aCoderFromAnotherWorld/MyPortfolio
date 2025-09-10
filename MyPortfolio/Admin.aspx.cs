@@ -31,6 +31,7 @@ namespace MyPortfolio
                 LoadProjects();
                 LoadEducation();
                 LoadProfile();
+                LoadMessages();
             }
         }
 
@@ -632,6 +633,182 @@ namespace MyPortfolio
 
             lblProfileMessage.Text = "Profile updated successfully!";
             lblProfileMessage.Visible = true;
+        }
+        #endregion
+
+        #region Messages Management
+        private void LoadMessages(string filter = "all")
+        {
+            string connectionString = WebConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT ContactId, Name, Email, Subject, Message, IsRead, CreatedDate FROM Contacts ";
+
+                switch (filter)
+                {
+                    case "unread":
+                        query += "WHERE IsRead = 0 ";
+                        break;
+                    case "read":
+                        query += "WHERE IsRead = 1 ";
+                        break;
+                }
+
+                query += "ORDER BY CreatedDate DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                gvMessages.DataSource = dt;
+                gvMessages.DataBind();
+            }
+        }
+
+        protected string GetMessagePreview(string message)
+        {
+            if (string.IsNullOrEmpty(message))
+                return string.Empty;
+
+            if (message.Length > 100)
+                return message.Substring(0, 100) + "...";
+
+            return message;
+        }
+
+        protected void ddlMessageFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadMessages(ddlMessageFilter.SelectedValue);
+        }
+
+        protected void gvMessages_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                bool isRead = Convert.ToBoolean(DataBinder.Eval(e.Row.DataItem, "IsRead"));
+                if (!isRead)
+                {
+                    e.Row.CssClass = "unread-message";
+                }
+            }
+        }
+
+        protected void gvMessages_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "ViewMessage")
+            {
+                int contactId = Convert.ToInt32(e.CommandArgument);
+                ViewMessageDetails(contactId);
+            }
+            else if (e.CommandName == "DeleteMessage")
+            {
+                int contactId = Convert.ToInt32(e.CommandArgument);
+                DeleteMessage(contactId);
+            }
+        }
+
+        private void ViewMessageDetails(int contactId)
+        {
+            string connectionString = WebConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT ContactId, Name, Email, Subject, Message, IsRead, CreatedDate FROM Contacts WHERE ContactId = @ContactId", conn);
+                cmd.Parameters.AddWithValue("@ContactId", contactId);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // Store message details in ViewState for later use
+                    ViewState["CurrentMessageId"] = contactId;
+                    ViewState["CurrentMessageIsRead"] = reader["IsRead"];
+
+                    // Register JavaScript to show modal with message details
+                    string script = $@"
+                document.getElementById('modalMessageSubject').innerText = '{EscapeJavaScriptString(reader["Subject"].ToString())}';
+                document.getElementById('modalMessageName').innerText = '{EscapeJavaScriptString(reader["Name"].ToString())}';
+                document.getElementById('modalMessageEmail').innerText = '{EscapeJavaScriptString(reader["Email"].ToString())}';
+                document.getElementById('modalMessageDate').innerText = '{Convert.ToDateTime(reader["CreatedDate"]).ToString("MMM dd, yyyy HH:mm")}';
+                document.getElementById('modalMessageContent').innerText = '{EscapeJavaScriptString(reader["Message"].ToString())}';
+                
+                // Show/hide Mark as Read button
+                var markAsReadBtn = document.getElementById('{btnMarkAsRead.ClientID}');
+                if (markAsReadBtn) {{
+                    markAsReadBtn.style.display = {(Convert.ToBoolean(reader["IsRead"]) ? "'none'" : "'block'")};
+                }}
+                
+                // Show modal
+                document.getElementById('messageModal').style.display = 'block';
+            ";
+
+                    ClientScript.RegisterStartupScript(this.GetType(), "ShowMessageModal", script, true);
+
+                    // Mark as read if it's unread
+                    if (!Convert.ToBoolean(reader["IsRead"]))
+                    {
+                        MarkMessageAsRead(contactId);
+                    }
+                }
+                reader.Close();
+            }
+        }
+
+        private string EscapeJavaScriptString(string input)
+        {
+            return input.Replace("'", "\\'").Replace("\"", "\\\"").Replace("\r", "").Replace("\n", "\\n");
+        }
+
+        protected void btnMarkAsRead_Click(object sender, EventArgs e)
+        {
+            if (ViewState["CurrentMessageId"] != null)
+            {
+                int contactId = Convert.ToInt32(ViewState["CurrentMessageId"]);
+                MarkMessageAsRead(contactId);
+
+                // Refresh the messages grid
+                LoadMessages(ddlMessageFilter.SelectedValue);
+
+                // Hide the mark as read button
+                string script = @"
+            document.getElementById('messageModal').style.display = 'none';
+        ";
+                ClientScript.RegisterStartupScript(this.GetType(), "CloseModal", script, true);
+            }
+        }
+
+        private void MarkMessageAsRead(int contactId)
+        {
+            string connectionString = WebConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("UPDATE Contacts SET IsRead = 1 WHERE ContactId = @ContactId", conn);
+                cmd.Parameters.AddWithValue("@ContactId", contactId);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        private void DeleteMessage(int contactId)
+        {
+            string connectionString = WebConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM Contacts WHERE ContactId = @ContactId", conn);
+                cmd.Parameters.AddWithValue("@ContactId", contactId);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            LoadMessages(ddlMessageFilter.SelectedValue);
+            ShowAlert("Message deleted successfully!", false);
         }
         #endregion
 

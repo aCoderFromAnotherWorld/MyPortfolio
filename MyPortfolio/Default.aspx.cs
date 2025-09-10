@@ -213,5 +213,52 @@ namespace MyPortfolio
 
             return null;
         }
+
+
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string name = txtName.Text.Trim();
+                string email = txtEmail.Text.Trim();
+                string subject = txtSubject.Text.Trim();
+                string message = txtMessage.Text.Trim();
+
+                // Validate and save to database (same logic as WebMethod)
+                string connectionString = WebConfigurationManager.ConnectionStrings["portfolioDB"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("INSERT INTO Contacts (Name, Email, Subject, Message) VALUES (@Name, @Email, @Subject, @Message)", conn);
+                    cmd.Parameters.AddWithValue("@Name", name);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Subject", subject);
+                    cmd.Parameters.AddWithValue("@Message", message);
+
+                    conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        lblContactMessage.Text = "Message sent successfully!";
+                        lblContactMessage.CssClass = "alert alert-success";
+                        lblContactMessage.Visible = true;
+
+                        // Clear form
+                        txtName.Text = "";
+                        txtEmail.Text = "";
+                        txtSubject.Text = "";
+                        txtMessage.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lblContactMessage.Text = "Error sending message: " + ex.Message;
+                lblContactMessage.CssClass = "alert alert-error";
+                lblContactMessage.Visible = true;
+            }
+        }
     }
 }
